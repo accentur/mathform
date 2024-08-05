@@ -2,6 +2,10 @@
   {{ a }} + {{ b }} =
 
   <input formControlName="answer" />
+
+  <ng-container *ngIf="mathForm.errors && mathForm.controls.answer.touched">
+    <div>Input is invalid</div>
+  </ng-container>
 </form>
 
 <hr />
