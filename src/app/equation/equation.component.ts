@@ -17,6 +17,20 @@ export class EquationComponent {
 
   }, [MathValidators.addition ('answer','a','b')]);
   constructor() {
+
+    this.mathForm.statusChanges.subscribe(value => {
+      
+      if (value === 'INVALID') {
+        return;
+      }
+
+      this.mathForm.patchValue({
+        b: this.randomNumbers(),
+        answer:''
+
+      });
+
+    });
     
 
   }
