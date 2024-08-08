@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+import { delay,filter } from 'rxjs';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MathValidators } from '../math-validators';
 
@@ -18,11 +19,14 @@ export class EquationComponent {
   }, [MathValidators.addition ('answer','a','b')]);
   constructor() {
 
-    this.mathForm.statusChanges.subscribe(value => {
+    this.mathForm.statusChanges.pipe(
+     filter(value=>value==='VALID'),
+      delay(200)
+    ).subscribe(value => {
       
-      if (value === 'INVALID') {
-        return;
-      }
+      // if (value === 'INVALID') {
+      //   return;
+      // }
 
       this.mathForm.patchValue({
         b: this.randomNumbers(),
