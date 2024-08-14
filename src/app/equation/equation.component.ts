@@ -10,6 +10,7 @@ import { MathValidators } from '../math-validators';
   styleUrls: ['./equation.component.css']
 })
 export class EquationComponent {
+[x: string]: any;
 
   solutionPerSeconds = 0.0;
 
@@ -28,7 +29,7 @@ export class EquationComponent {
 
     this.mathForm.statusChanges.pipe(
      filter(value=>value==='VALID'),
-      delay(200),
+      delay(2000),
       scan(acc => { 
 
         return {numberSolved1:acc.numberSolved1+1,timeS:acc.timeS}
@@ -65,6 +66,10 @@ export class EquationComponent {
     return this.mathForm.value.b;
   }
 
+   get answer() {
+    
+    return this.mathForm.value.answer;
+  }
   randomNumbers() {
     
     return Math.floor(Math.random() * 10);

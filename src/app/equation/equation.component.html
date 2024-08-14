@@ -1,16 +1,21 @@
 <form [formGroup]="mathForm">
-  {{ a }} + {{ b }} =
+  <div class="equation">{{ a }} + {{ b }} =</div>
 
-  <input formControlName="answer" />
+  <input
+    formControlName="answer"
+    [ngClass]="{
+      'white-color': a! + b! === +answer!,
+      'red-color': a! + b! !== +answer!
+    }"
+  />
 
-  <ng-container *ngIf="mathForm.errors && mathForm.controls.answer.touched">
+  <!-- <ng-container *ngIf="mathForm.errors && mathForm.controls.answer.touched">
     <div>Input is invalid</div>
-  </ng-container>
+  </ng-container> -->
 </form>
-
-{{ solutionPerSeconds }} per seconds
-<hr />
+<div class="stats">{{ solutionPerSeconds }} per seconds</div>
+<!-- <hr />
 
 <div>Form is valid : {{ mathForm.valid }}</div>
 <div>Form values : {{ mathForm.value | json }}</div>
-<div>Form values : {{ mathForm.errors | json }}</div>
+<div>Form values : {{ mathForm.errors | json }}</div> -->
