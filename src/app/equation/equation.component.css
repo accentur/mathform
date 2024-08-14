@@ -33,3 +33,8 @@ input:focus{
 .red-color {
     color: red;
 }
+
+.close{
+
+    background-color: green;
+}

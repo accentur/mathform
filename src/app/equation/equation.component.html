@@ -1,13 +1,15 @@
 <form [formGroup]="mathForm">
   <div class="equation">{{ a }} + {{ b }} =</div>
 
-  <input
+  <!-- <input
     formControlName="answer"
     [ngClass]="{
       'white-color': a! + b! === +answer!,
       'red-color': a! + b! !== +answer!
     }"
-  />
+  /> -->
+
+  <input appAnswerHIghlight formControlName="answer" />
 
   <!-- <ng-container *ngIf="mathForm.errors && mathForm.controls.answer.touched">
     <div>Input is invalid</div>
